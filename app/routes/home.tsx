@@ -82,7 +82,7 @@ export default function Home() {
           <div className="flex flex-col items-center justify-center mt-10 gap-4">
             <Link
               to="/upload"
-              className="btn btn-primary w-fit text-lg font-semibold"
+              className="primary-button w-fit text-lg font-semibold"
             >
               Upload Your first Resume
             </Link>
