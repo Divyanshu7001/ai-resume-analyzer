@@ -7,7 +7,7 @@ import { usePuterStore } from "~/lib/puter";
 
 export const meta = () => {
   return [
-    { title: "Resumind | Review" },
+    { title: "ANALIZER | Review" },
     {
       name: "description",
       content: "Detailed review of your resume",
@@ -33,7 +33,7 @@ const resume = () => {
         return;
       }
       const data = JSON.parse(resume);
-      console.log("Resume Data:", data);
+      //console.log("Resume Data:", data);
 
       const resumeBlob = await fs.read(data.resumePath);
       if (!resumeBlob) {

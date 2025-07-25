@@ -45,14 +45,22 @@ const ResumeCard = ({
           <ScoreCircle score={feedback.overallScore} />
         </div>
       </div>
-      {resumeUrl && (
+      {(imagePath || resumeUrl) && (
         <div className="gradiant-border animate-in fade-in duration-1000">
           <div className="w-full h-full">
-            <img
-              src={resumeUrl}
-              alt="resume"
-              className="w-full h-[350px] max-sm:h-[200px] object-cover object-top"
-            />
+            {resumeUrl ? (
+              <img
+                src={resumeUrl}
+                alt="my resume"
+                className="w-full h-[350px] max-sm:h-[200px] object-cover object-top"
+              />
+            ) : (
+              <img
+                src={imagePath}
+                alt="fixed resume"
+                className="w-full h-[350px] max-sm:h-[200px] object-cover object-top"
+              />
+            )}
           </div>
         </div>
       )}

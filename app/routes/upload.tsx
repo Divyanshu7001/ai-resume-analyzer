@@ -7,6 +7,16 @@ import { usePuterStore } from "~/lib/puter";
 import { generateUUID } from "~/lib/utils";
 import { prepareInstructions } from "../constants/index";
 
+export const meta = () => {
+  return [
+    { title: "ANALIZER | Upload Page" },
+    {
+      name: "description",
+      content: "Upload your resume to get started",
+    },
+  ];
+};
+
 const upload = () => {
   const { auth, isLoading, fs, kv, ai } = usePuterStore();
   const navigate = useNavigate();
@@ -73,6 +83,8 @@ const upload = () => {
     await kv.set(`resume:${uuid}`, JSON.stringify(data));
     setStatusText("Analyzing your resume...");
 
+    //console.log("Uploaded file path:", uploadedFile.path);
+
     const feedback = await ai.feedback(
       uploadedFile.path,
       prepareInstructions({
@@ -95,7 +107,7 @@ const upload = () => {
 
     await kv.set(`feedback:${uuid}`, JSON.stringify(data));
     setStatusText("Analysis complete! Redirecting...");
-    console.log(data);
+    //console.log(data);
 
     navigate(`/resume/${uuid}`, { replace: true });
   };
@@ -127,13 +139,13 @@ const upload = () => {
     <main className='bg-[url("/images/bg-main.svg")] bg-cover'>
       <Navbar />
       <section className="main-section">
-        <div className="page-heading py-16">
+        <div className="page-heading py-8">
           <h1>Upload Your Resume</h1>
           <h2>Smart feedback system for your resume</h2>
           {isProcessing ? (
             <>
               <h2>{statusText}</h2>
-              <img src="./images/resume-scan.gif" alt="" className="w-full" />
+              <img src="./images/resume-scan.gif" alt="" className="w-[60%]" />
             </>
           ) : (
             <h2>Drop your resume for an ATS score & improvement tips</h2>

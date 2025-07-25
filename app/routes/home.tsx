@@ -1,15 +1,17 @@
 import Navbar from "~/components/Navbar";
 import type { Route } from "./+types/home";
-import { resumes } from "~/constants";
+import { fixedResumes } from "~/constants";
 import ResumeCard from "~/components/ResumeCard";
 import { usePuterStore } from "~/lib/puter";
 import { Link, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
-import resume from "./resume";
+import Footer from "~/components/Footer";
+import type { T } from "node_modules/react-router/dist/development/index-react-server-client-CUidsuu_.mjs";
+import Testimonials from "~/components/Testimonials";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Resumind" },
+    { title: "ANALIZER" },
     {
       name: "description",
       content: "Smart analyzer and feebacks for your resume",
@@ -50,13 +52,8 @@ export default function Home() {
     <main className="bg-[url('/images/bg-main.svg')] bg-cover">
       <Navbar />
       <section className="main-section">
-        <div className="page-heading py-16">
+        <div className="page-heading py-8">
           <h1>Track Your Applications & Resume Ratings</h1>
-          {!isLoadingResumes && resumes.length === 0 ? (
-            <h2>No Resumes Found. Upload your first resume to get feedback</h2>
-          ) : (
-            <h2>Review your submissions and get AI-powered Feedback</h2>
-          )}
           <h2>Get insights and improve your resume like never before</h2>
         </div>
         {isLoadingResumes && (
@@ -64,12 +61,30 @@ export default function Home() {
             <img src="/images/resume-scan-2.gif" alt="" className="w-[200px]" />
           </div>
         )}
-        {resumes.length > 0 && (
+        {fixedResumes.length > 0 && (
           <section className="resumes-section">
-            {resumes.map((resume) => (
+            {fixedResumes.map((resume) => (
               <ResumeCard key={resume.id} resume={resume} />
             ))}
           </section>
+        )}
+        <h1 className="mt-6">Your Recent Searches</h1>
+        {!isLoadingResumes && resumes.length === 0 ? (
+          <>
+            <h2>No Resumes Found. Upload your first resume to get feedback</h2>
+            <div className="flex flex-col items-center justify-center mt-5 gap-4">
+              <Link
+                to="/upload"
+                className="primary-button w-fit text-lg font-semibold"
+              >
+                Upload Your first Resume
+              </Link>
+            </div>
+          </>
+        ) : (
+          <h2 className="text-center">
+            Review your submissions and get AI-powered Feedback
+          </h2>
         )}
         {!isLoadingResumes && resumes.length > 0 && (
           <section className="resumes-section">
@@ -78,17 +93,9 @@ export default function Home() {
             ))}
           </section>
         )}
-        {!isLoadingResumes && resumes.length === 0 && (
-          <div className="flex flex-col items-center justify-center mt-10 gap-4">
-            <Link
-              to="/upload"
-              className="primary-button w-fit text-lg font-semibold"
-            >
-              Upload Your first Resume
-            </Link>
-          </div>
-        )}
       </section>
+      <Testimonials />
+      <Footer />
     </main>
   );
 }

@@ -1,4 +1,4 @@
-export const resumes: Resume[] = [
+export const fixedResumes: Resume[] = [
   {
     id: "1",
     companyName: "Google",
@@ -244,3 +244,54 @@ export const prepareInstructions = ({
   Provide the feedback using the following format: ${AIResponseFormat}
   Return the analysis as a JSON object, without any other text and without the backticks.
   Do not include any other text or comments.`;
+
+export const testimonials = [
+  {
+    quote:
+      "Thanks to Analizer, I landed my dream role at AlphaStream Technologies. It pinpointed the weak areas in my resume and helped tailor it precisely for the position. Within two weeks of applying, I had three interview calls—and one job offer!",
+    name: "Adrian Johnson",
+    title: "System Engineer at AlphaStream Technologies",
+  },
+  {
+    quote:
+      "Analizer completely transformed my job search. After using it to optimize my resume for a software development role, I received an interview invite the same week. The recruiter even complimented how well my skills matched the role.",
+    name: "Michael Williams",
+    title: "SDE at AlphaStream Technologies",
+  },
+  {
+    quote:
+      "I had been applying for months with no luck. Analizer revealed several gaps in my resume alignment with job descriptions. After implementing its suggestions, I secured an offer at Alpha Technologies in just under a month.",
+    name: "Sam Smith",
+    title: "Director at Alpha Technologies",
+  },
+  {
+    quote:
+      "Analizer gave me insights no career coach ever did. It matched my strengths to the right keywords and improved how my resume was interpreted by applicant tracking systems. That’s how I got into Stream Technologies as a director.",
+    name: "Andrew Brown",
+    title: "Director at Stream Technologies",
+  },
+  {
+    quote:
+      "I used Analizer before applying for a senior role, and the improvements it suggested were spot on. I got multiple callbacks, and eventually a fantastic offer from AlphaStream Technologies. I recommend it to every job seeker I know.",
+    name: "Michael Johnson",
+    title: "Director at AlphaStream Technologies",
+  },
+];
+
+export const socialMedia = [
+  {
+    id: 1,
+    img: "./icons/git.svg",
+    link: "https://github.com/Divyanshu7001",
+  },
+  {
+    id: 2,
+    img: "./icons/twit.svg",
+    link: "",
+  },
+  {
+    id: 3,
+    img: "./icons/link.svg",
+    link: "",
+  },
+];
